@@ -7,6 +7,9 @@ import (
 
 func init() {
 	beego.Router("/", &controllers.MainController{})
+	beego.Router("/index.html", &controllers.MainController{})
+	beego.Router("/contact.html", &controllers.MainController{},"*:Contact")
+	beego.Router("/about.html", &controllers.MainController{},"*:About")
 	
 	beego.SetStaticPath("/css", "static/css")
 	beego.SetStaticPath("/fonts", "static/fonts")
