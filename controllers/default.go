@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
+	"travel-web/models"
 )
 var local = "en/"
 type MainController struct {
@@ -41,9 +42,45 @@ func (c *MainController) Contact() {
 func (c *MainController) Posts() {
 	// c.Data["Website"] = "beego.me"
 	// c.Data["Email"] = "astaxie@gmail.com"
+	page ,err:= c.GetInt(":page")
+	pageSize,_ := beego.AppConfig.Int("page-size")
+	if(err != nil){
+		page = 0
+	}
+	count := models.GetPostsCount()
+	posts := models.GetPosts(page-1,pageSize)
+	
+	total := count/pageSize
+	if count%pageSize>0{
+		total++
+	}
+	hasPrev := page >3
+	hasNext := page < total-3
+	start := page-2
+	end:=page+2
+	if start<1{
+		end+=1-start
+		start=1
+	}
+	if end >= total{
+		start-=end-total+1
+		end = total-1
+	}
+
+	var pages = make([]int, 0, 5)
+	for i:=start;i<=end;i++{
+		pages= append(pages,i)
+	}
+	c.Data["prev"] = page-3
+	c.Data["next"] = page+3
+	c.Data["pages"] = pages
+	c.Data["postsCount"] = count
+	c.Data["posts"] = posts
 	c.Data["isPosts"] = true
-	c.Layout = local+"layout.html"
-	c.TplName = local+"posts.html"
+	c.Data["hasPrev"] = hasPrev
+	c.Data["hasNext"] = hasNext
+	c.Layout = local +"layout.html"
+	c.TplName = local +"posts.html"
 	c.LayoutSections = make(map[string]string)
     c.LayoutSections["banner"] = local+"banner-others.html"
 }
