@@ -45,7 +45,7 @@ func (c *MainController) Posts() {
 	page ,err:= c.GetInt(":page")
 	pageSize,_ := beego.AppConfig.Int("page-size")
 	if(err != nil){
-		page = 0
+		page = 1
 	}
 	count := models.GetPostsCount()
 	posts := models.GetPosts(page-1,pageSize)
@@ -81,6 +81,19 @@ func (c *MainController) Posts() {
 	c.Data["hasNext"] = hasNext
 	c.Layout = local +"layout.html"
 	c.TplName = local +"posts.html"
+	c.LayoutSections = make(map[string]string)
+    c.LayoutSections["banner"] = local+"banner-others.html"
+}
+
+
+func (c *MainController) Post() {
+	// c.Data["Website"] = "beego.me"
+	// c.Data["Email"] = "astaxie@gmail.com"
+	name := c.GetString(":name")
+	post := models.GetPost(name)
+	c.Data["post"] = post
+	c.Layout = local +"layout.html"
+	c.TplName = local +"post.html"
 	c.LayoutSections = make(map[string]string)
     c.LayoutSections["banner"] = local+"banner-others.html"
 }

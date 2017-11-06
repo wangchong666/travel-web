@@ -7,14 +7,18 @@ import(
 )
 type Post struct {
     Name     string `bson:"name"`
-    Title    string `bson:"title"`
-    Location string `bson:"location"`
-    Date     string `bson:"date"`
     Category string `bson:"category"`
     Address  string `bson:"address"`
-    Content  string `bson:"content"`
 	Site     string `bson:"site"`
 	Cover    string `bson:"cover"`
+	EnContent *PostContent `bson:"en"`
+}
+
+type PostContent struct{
+	Title    string `bson:"title"`
+    Location string `bson:"location"`
+	Date     string `bson:"date"`
+	Content  string `bson:"content"`
 }
 
 func AddPost(){
