@@ -13,6 +13,7 @@ func init() {
 	beego.Router("/posts/page/:page", &controllers.MainController{},"*:Posts")
 	beego.Router("/post/name/:name", &controllers.MainController{},"*:Post")
 	beego.Router("/posts.html", &controllers.MainController{},"*:Posts")
+	beego.Router("/post/name/:name", &controllers.MainController{},"*:Post")
 	
 	beego.SetStaticPath("/css", "static/css")
 	beego.SetStaticPath("/fonts", "static/fonts")
