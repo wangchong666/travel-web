@@ -2501,8 +2501,9 @@ h2#campoLocalita {
     }
 }
 @media (min-width: 992px){
-    #single-media-wrap img{
-        max-width: 100%;
+    article.entry p img {
+        display: block;
+        margin: 50px auto;
     }
 
 }
@@ -2519,5 +2520,10 @@ h2#campoLocalita {
     article.entry p img {
         display: block;
         margin: 50px auto;
+    }
+
+    #single-media-wrap img{
+        max-width: 100%;
+        width: 100%;
     }
 }
