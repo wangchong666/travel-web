@@ -1,0 +1,57 @@
+<div class="blog">
+
+    <h2 class="w3">TRAVEL</h2>
+    <!--728x90-->
+    <!-- {{range .Pages}}
+    {{.Num}} of {{$.Total}}
+    {{end}} -->
+    <div class="blog-grids1">
+        {{range .posts}}
+        <div class="col-md-6 blog-grid">
+            <div class="blog-grid-left1">
+                <a href="/post/name/{{.Name}}">
+                    <img src="{{.Cover}}" alt=" " class="img-responsive">
+                </a>
+            </div>
+            <div class="blog-grid-right1">
+                <a href="/post/name/{{.Name}}">{{.EnContent.Title}}</a>
+                <h4>{{.EnContent.Date}}</h4>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+            <div class="clearfix"> </div>
+            <div class="more m1">
+                <a class="btn effect6" href="/post/name/{{.Name}}">Learn More</a>
+            </div>
+        </div>
+        {{end}}
+      
+        <div class="clearfix"> </div>
+    </div>
+
+    <nav class="paging">
+        <ul class="pagination pagination-lg">
+            {{if .hasPrev}}
+            <li>
+                <a href="/posts/page/{{.prev}}" aria-label="Previous">
+                    <span aria-hidden="true">
+                        <<</span>
+                </a>
+            </li>
+            {{end}}
+            {{range .pages}}
+            <li>
+                <a href="/posts/page/{{.}}">{{.}}</a>
+            </li>
+            {{end}}
+ 
+            {{if .hasNext}}
+            <li>
+                <a href="/posts/page/{{.next}}" aria-label="Next">
+                    <span aria-hidden="true">>></span>
+                </a>
+            </li>
+            {{end}}
+        </ul>
+    </nav>
+
+</div>

@@ -39,6 +39,16 @@ func (c *MainController) Contact() {
     c.LayoutSections["banner"] = local+"banner-others.html"
 }
 
+func (c *MainController) Sitemap() {
+	// c.Data["Website"] = "beego.me"
+	// c.Data["Email"] = "astaxie@gmail.com"
+	c.Data["isContact"] = true
+	c.Layout = local+"layout.html"
+	c.TplName = local+"contact.html"
+	c.LayoutSections = make(map[string]string)
+    c.LayoutSections["banner"] = local+"banner-others.html"
+}
+
 func (c *MainController) Post() {
 	// c.Data["Website"] = "beego.me"
 	// c.Data["Email"] = "astaxie@gmail.com"
