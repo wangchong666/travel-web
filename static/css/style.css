@@ -2436,3 +2436,88 @@ label.icon-search span {
     width: 74%;
 }
 }
+.entry.clearfix img{
+    height: auto!important;
+}
+
+
+
+#single-heading {
+    background: none repeat scroll 0 0 transparent;
+    margin-bottom: 70px;
+    margin-top: 70px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+#single-heading h1 {
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.2em;
+    margin: 0;
+    padding-top: 57px;
+    text-align: center;
+}
+
+#single-media-wrap {
+    text-align: center;
+}
+
+h2#campoLocalita {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-style: italic;
+    text-transform: none;
+}
+
+#dataDelPost {
+    color: #999;
+    text-align: center;
+    font-style: italic;
+}
+@media only screen and (max-width: 768px) {
+    #single-media-wrap img{
+        max-width: 100%;
+    }
+    .entry.clearfix p {
+        margin-bottom: 0;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0;
+        max-width: 100%;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    article.entry p img {
+        display: block;
+        margin: 50px auto;
+        max-width: 100%;
+    }
+}
+@media (min-width: 768px){ 
+    #single-media-wrap {
+        max-width: 100%;
+    }
+}
+@media (min-width: 992px){
+    #single-media-wrap img{
+        max-width: 100%;
+    }
+
+}
+@media (min-width: 1200){ 
+    .entry.clearfix p {
+        margin-bottom: 0;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0;
+        max-width: 634px;
+        padding-left: 70px;
+        padding-right: 70px;
+    }
+    article.entry p img {
+        display: block;
+        margin: 50px auto;
+    }
+}

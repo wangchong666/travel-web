@@ -43,7 +43,10 @@ func (c *MainController) Post() {
 	// c.Data["Website"] = "beego.me"
 	// c.Data["Email"] = "astaxie@gmail.com"
 	name := c.GetString(":name")
-	post := models.GetPost(name)
+	post,err := models.GetPost(name)
+	if err != nil{
+		c.Abort("404")
+	}
 	c.Data["isPosts"] = true
 	c.Data["post"] = post
 	c.Layout = local+"layout.html"
@@ -98,15 +101,3 @@ func (c *MainController) Posts() {
     c.LayoutSections["banner"] = local+"banner-others.html"
 }
 
-
-func (c *MainController) Post() {
-	// c.Data["Website"] = "beego.me"
-	// c.Data["Email"] = "astaxie@gmail.com"
-	name := c.GetString(":name")
-	post := models.GetPost(name)
-	c.Data["post"] = post
-	c.Layout = local +"layout.html"
-	c.TplName = local +"post.html"
-	c.LayoutSections = make(map[string]string)
-    c.LayoutSections["banner"] = local+"banner-others.html"
-}

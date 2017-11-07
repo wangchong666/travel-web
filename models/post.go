@@ -62,7 +62,7 @@ func GetPostsCount()int{
 }
 
 
-func GetPost(name string)*Post{
+func GetPost(name string)(*Post,error){
 	session, err := mgo.Dial("127.0.0.1")
 	if err != nil {
 			panic(err)
@@ -73,8 +73,8 @@ func GetPost(name string)*Post{
 	c := session.DB("travel").C("posts")
 	var post Post
 	err = c.Find(bson.M{"name": name}).One(&post)
-	if err != nil {
-			log.Fatal(err)
-	}
-	return &post
+	// if err != nil {
+	// 		log.Fatal(err)
+	// }
+	return &post,err
 }
