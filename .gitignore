@@ -1,1 +1,3 @@
 *.exe
+admin/blur-admin/node_modules/*
+admin/blur-admin/bower_components/*
