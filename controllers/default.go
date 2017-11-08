@@ -125,5 +125,5 @@ func GetLocal(c *beego.Controller)string{
 }
 
 func (c *MainController) Admin() {
-	c.TplName = "admin/index.html"
+	c.TplName = "/views/admin/index.html"
 }
