@@ -1,19 +1,19 @@
 <div id="single-media-wrap">
-    <img src="http://meravigliapaper.com/wp-content/uploads/2017/09/ok1.jpg" alt="Oviedo" id="post-thumbnail">
+    <img src="{{.post.Cover}}" alt='{{(map_get .post.Content "en").Title}}' id="post-thumbnail">
 </div>
 <header id="single-heading">
-    <h1>{{.post.EnContent.Title}}</h1>
-    <h2 id="campoLocalita">{{.post.EnContent.Location}}</h2>
+    <h1>{{(map_get .post.Content "en").Title}}</h1>
+    <h2 id="campoLocalita">{{(map_get .post.Content "en").Location}}</h2>
     <section class="meta clearfix" id="single-meta">
-        <div id="dataDelPost">{{.post.EnContent.Date}}</div>
+        <div id="dataDelPost">{{(map_get .post.Content "en").Date}}</div>
         <!-- <ul>
             <li>
                 <span class="wpex-icon-folder-open"></span>
-                <a href="http://meravigliapaper.com/category/eat/" title="{{.post.EnContent.Title}}" rel="category tag">Eat</a>
+                <a href="http://meravigliapaper.com/category/eat/" title="{{ (map_get .post.Content "en").Title}}" rel="category tag">Eat</a>
             </li>
         </ul> -->
     </section>
     <!--/meta -->
 </header>
 
-{{str2html .post.EnContent.Content}}
+{{str2html (map_get .post.Content "en").Content}}

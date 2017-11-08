@@ -11,6 +11,7 @@ type MainController struct {
 
 func (c *MainController) Get() {
 	// c.Data["Website"] = "beego.me"
+	local = GetLocal(&c.Controller)
 	c.Data["isHome"] = true
 	c.Layout = local+"layout.html"
 	c.TplName = local+"index.html"
@@ -19,6 +20,7 @@ func (c *MainController) Get() {
 }
 
 func (c *MainController) About() {
+	local = GetLocal(&c.Controller)
 	// c.Data["Website"] = "beego.me"
 	// c.Data["Email"] = "astaxie@gmail.com"
 	c.Data["isAbout"] = true
@@ -30,6 +32,7 @@ func (c *MainController) About() {
 
 
 func (c *MainController) Contact() {
+	local = GetLocal(&c.Controller)
 	// c.Data["Website"] = "beego.me"
 	// c.Data["Email"] = "astaxie@gmail.com"
 	c.Data["isContact"] = true
@@ -40,6 +43,7 @@ func (c *MainController) Contact() {
 }
 
 func (c *MainController) Sitemap() {
+	local = GetLocal(&c.Controller)
 	// c.Data["Website"] = "beego.me"
 	// c.Data["Email"] = "astaxie@gmail.com"
 	c.Data["isContact"] = true
@@ -50,6 +54,7 @@ func (c *MainController) Sitemap() {
 }
 
 func (c *MainController) Post() {
+	local = GetLocal(&c.Controller)
 	// c.Data["Website"] = "beego.me"
 	// c.Data["Email"] = "astaxie@gmail.com"
 	name := c.GetString(":name")
@@ -66,6 +71,7 @@ func (c *MainController) Post() {
 }
 
 func (c *MainController) Posts() {
+	local = GetLocal(&c.Controller)
 	// c.Data["Website"] = "beego.me"
 	// c.Data["Email"] = "astaxie@gmail.com"
 	page ,err:= c.GetInt(":page")
@@ -97,6 +103,7 @@ func (c *MainController) Posts() {
 	for i:=start;i<=end;i++{
 		pages= append(pages,i)
 	}
+	c.Data["title"] = "Posts"
 	c.Data["prev"] = page-3
 	c.Data["next"] = page+3
 	c.Data["pages"] = pages
@@ -111,3 +118,12 @@ func (c *MainController) Posts() {
     c.LayoutSections["banner"] = local+"banner-others.html"
 }
 
+func GetLocal(c *beego.Controller)string{
+	local := c.GetString(":lang","en")+"/"
+	c.Data["local"] = local
+	return local
+}
+
+func (c *MainController) Admin() {
+	c.TplName = "admin/index.html"
+}

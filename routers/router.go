@@ -7,6 +7,7 @@ import (
 
 func init() {
 	beego.Router("/", &controllers.MainController{})
+	beego.Router("/admin", &controllers.MainController{},"GET:Admin")
 	beego.Router("/sitemap.xml", &controllers.MainController{},"*:Sitemap")
 	beego.Router("/?:lang/index.html", &controllers.MainController{})
 	beego.Router("/?:lang/contact.html", &controllers.MainController{},"*:Contact")
