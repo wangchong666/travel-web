@@ -58,3 +58,46 @@
     <ngx-security-cameras></ngx-security-cameras>
   </div>
 </div> -->
+<nb-card>
+  <nb-card-header>
+    Smart Table
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="source" (edit)="onEdit($event,content)" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">{{currentData.Name}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <nb-tabset>
+      <nb-tab tabTitle="{{key}}" *ngFor="let key of objectKeys">
+        <nb-card>
+          <nb-card-body>
+            <div class="input-group">
+              <input type="text" placeholder="Title" [(ngModel)]="currentData.Content[key].Title" class="form-control" />
+            </div>
+            <div class="input-group">
+              <input type="text" placeholder="Date" [(ngModel)]="currentData.Content[key].Date" class="form-control" />
+            </div>
+     
+            <div class="input-group has-person-icon">
+              <input type="text" placeholder="With Icon"  [(ngModel)]="currentData.Content[key].Location" class="form-control" />
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </nb-tab>
+    </nb-tabset>
+  </div>
+  <div class="modal-footer">
+    <!-- <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button> -->
+    <button class="btn btn-md btn-primary" (click)="c('Close click')">Save changes</button>
+  </div>
+</ng-template>

@@ -15,6 +15,8 @@ func init() {
 	beego.Router("/?:lang/posts/page/:page", &controllers.MainController{},"*:Posts")
 	beego.Router("/?:lang/post/name/:name", &controllers.MainController{},"*:Post")
 	beego.Router("/?:lang/posts.html", &controllers.MainController{},"*:Posts")
+
+	beego.Router("/api/posts", &controllers.PostsController{})
 	
 	beego.SetStaticPath("/css", "static/css")
 	beego.SetStaticPath("/fonts", "static/fonts")
