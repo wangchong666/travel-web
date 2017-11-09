@@ -91,6 +91,7 @@
             <div class="input-group has-person-icon">
               <input type="text" placeholder="With Icon"  [(ngModel)]="currentData.Content[key].Location" class="form-control" />
             </div>
+            <textarea [froalaEditor] [(ngModel)]="currentData.Content[key].Content"></textarea>
           </nb-card-body>
         </nb-card>
       </nb-tab>
